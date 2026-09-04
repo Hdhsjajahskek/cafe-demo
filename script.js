@@ -232,3 +232,46 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+// ===== RESERVATION EXPERIENCE =====
+const reservationModal = document.getElementById('reservationModal');
+const reservationForm = document.getElementById('reservationForm');
+const reserveTriggers = document.querySelectorAll('.js-reserve');
+const closeModal = () => {
+    if (!reservationModal) return;
+    reservationModal.classList.remove('is-open');
+    reservationModal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+};
+const openModal = () => {
+    if (!reservationModal) return;
+    reservationModal.classList.add('is-open');
+    reservationModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => reservationForm?.querySelector('input')?.focus(), 180);
+};
+reserveTriggers.forEach(btn => btn.addEventListener('click', openModal));
+reservationModal?.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+reservationForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    const button = reservationForm.querySelector('button[type="submit"]');
+    const original = button.innerHTML;
+    button.innerHTML = 'Reservation request sent ✓';
+    button.disabled = true;
+    setTimeout(() => {
+        closeModal();
+        button.innerHTML = original;
+        button.disabled = false;
+        reservationForm.reset();
+    }, 1400);
+});
+
+// Prevent past dates in the demo booking form.
+const dateInput = reservationForm?.querySelector('input[type="date"]');
+if (dateInput) {
+    const now = new Date();
+    dateInput.min = new Date(now.getTime() - now.getTimezoneOffset()*60000).toISOString().slice(0,10);
+}

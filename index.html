@@ -50,8 +50,12 @@
             A third-wave specialty coffee house where every cup tells a story.
         </p>
         <div class="hero-buttons">
-            <a href="#menu" class="btn btn-primary">View Menu</a>
-            <a href="#contact" class="btn btn-ghost">Reserve a Table</a>
+            <a href="#menu" class="btn btn-primary">Explore Menu <span>→</span></a>
+            <button type="button" class="btn btn-ghost js-reserve">Reserve a Table <span>↗</span></button>
+        </div>
+        <div class="hero-trust">
+            <div class="trust-avatars"><span>J</span><span>M</span><span>A</span><span>+</span></div>
+            <div><strong>4.9/5</strong><small>from 200+ happy guests</small></div>
         </div>
     </div>
     
@@ -65,7 +69,7 @@
 <div class="marquee">
     <div class="marquee-track">
         <span>☕ Single-Origin Beans</span>
-        <span>� Fresh Baked Daily</span>
+        <span>🥐 Fresh Baked Daily</span>
         <span>🌱 Ethically Sourced</span>
         <span>🔥 Roasted In-House</span>
         <span>🎨 Hand-Crafted Drinks</span>
@@ -76,6 +80,14 @@
         <span>🎨 Hand-Crafted Drinks</span>
     </div>
 </div>
+
+<!-- ============ EXPERIENCE STRIP ============ -->
+<section class="experience-strip" aria-label="Cafe highlights">
+    <div class="experience-item"><span>01</span><strong>Small Batch</strong><small>Roasted twice weekly</small></div>
+    <div class="experience-item"><span>02</span><strong>Fresh Daily</strong><small>Pastries from 7am</small></div>
+    <div class="experience-item"><span>03</span><strong>Work Friendly</strong><small>Fast Wi-Fi &amp; outlets</small></div>
+    <div class="experience-item"><span>04</span><strong>Good People</strong><small>A neighborhood ritual</small></div>
+</section>
 
 <!-- ============ ABOUT ============ -->
 <section id="about" class="about">
@@ -377,6 +389,14 @@
 </section>
 
 <!-- ============ CONTACT / LOCATION ============ -->
+<section class="booking-cta">
+    <div class="booking-cta-inner">
+        <div><span class="section-eyebrow">Your table is waiting</span><h2>Make your next coffee<br><em>the good kind.</em></h2></div>
+        <div class="booking-actions"><button class="btn btn-light js-reserve" type="button">Book a Table <span>→</span></button><a class="text-link" href="#menu">See today's menu</a></div>
+    </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
 <section id="contact" class="contact">
     <div class="container">
         <div class="contact-header reveal">
@@ -459,10 +479,31 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Ember &amp; Oak Coffee House. Crafted with ☕ in Portland.</p>
+            <p>&copy; 2026 Ember &amp; Oak Coffee House. Crafted with ☕ in Portland.</p>
         </div>
     </div>
 </footer>
+
+<!-- ============ RESERVATION MODAL ============ -->
+<div class="modal" id="reservationModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reservationTitle">
+    <button class="modal-close" type="button" aria-label="Close reservation" data-close-modal>×</button>
+    <span class="section-eyebrow">Ember &amp; Oak</span>
+    <h2 id="reservationTitle">Reserve your table</h2>
+    <p>Tell us when you're coming and we'll take care of the rest.</p>
+    <form id="reservationForm" class="reservation-form">
+      <div class="form-row"><label>Name<input required name="name" placeholder="Your name"></label><label>Guests<select name="guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select></label></div>
+      <div class="form-row"><label>Date<input required type="date" name="date"></label><label>Time<select name="time"><option>10:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>6:00 PM</option><option>7:30 PM</option></select></label></div>
+      <label>Special request <textarea name="note" rows="3" placeholder="Birthday, window seat, accessibility..."></textarea></label>
+      <button class="btn btn-primary btn-block" type="submit">Request reservation <span>→</span></button>
+      <small class="form-note">Demo form — no payment required.</small>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MOBILE ACTION BAR ============ -->
+<div class="mobile-action-bar"><a href="tel:+15035550184">☎ Call</a><button class="js-reserve">Reserve</button><a href="#menu">☕ Menu</a></div>
 
 <script src="script.js"></script>
 </body>
